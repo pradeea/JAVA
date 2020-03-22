@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+                      class TooYoung extends RuntimeException{
+                          TooYoung(){
+                              System.out.println("sry bcz of age restrictions u r not allowed to acces our services");
+                          }
+                      }
+
+                        class TooOld extends RuntimeException{
+                            TooOld(){
+                                System.out.println("soryy we couldnt offer u our services bcz of high age limit");
+                            }
+                        }
+
+          class Matrimony{
+
+           
+              static void ageDetails(int age){
+                  
+                  if(age>18&&age<60){
+                      System.out.println("ur valid");
+
+                  }
+                  else if(age<18){
+                      throw new TooYoung();
+                  }
+
+                  else if(age>60){
+                      throw new TooOld();
+                  }
+
+              }    
+          }
+        
+          class City{
+
+           
+            
+
+            static void match(String addr){
+
+            if (addr.equals("bnglr")){
+                System.out.println("congratulations  there is a girl from kempagowda who want an banglore match");
+            }
+        else {
+
+            System.out.println("sorry no matches found");
+        }  
+        }
+}
+
+class UserDefinedException{
+
+    public static void main(String[] args) {
+   
+        int age=0;
+
+        Scanner sc=new Scanner(System.in);
+        System.out.println("plz enter ur name");
+        String name=sc.nextLine();
+
+        
+        System.out.println("plz enter ur age");
+        try{
+        age=Integer.parseInt(sc.nextLine());
+        }
+        catch(NumberFormatException e){
+            System.out.println("plz this feild is mandatory plz enter ur age");
+        } 
+        
+        Matrimony.ageDetails(age);       
+
+        System.out.println("plz enter ur address");
+        String addr=sc.nextLine();
+
+        
+        City.match(addr);
+        
+
+        System.out.println("details registered succesfully");
+        System.out.println("your details are");
+        System.out.println(name+"  "+age+"  "+addr);
+    }
+}
